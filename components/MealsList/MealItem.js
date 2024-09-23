@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import { Text, View, Pressable, StyleSheet, Image, Platform } from 'react-native';
-import MealDetails from './MealDetails';
+import MealDetails from '../MealDetails';
 
 function MealItem({ id, title, imageUrl, duration, complexity, affordability }) {
 	const navigation = useNavigation();
