@@ -11,13 +11,13 @@ import { addFavorite, removeFavorite } from '../store/redux/favorites';
 
 function MealDetailScreen({ route, navigation }) {
 	// const favoriteMealCtx = useContext(FavoritesContext);
-	const favoriteMealIds = useSelector((state) => state.favoriteMeals.ids);
+	const favoriteMealIds = useSelector(state => state.favoriteMeals.ids);
 	const dispatch = useDispatch();
 
 	const mealId = route.params.mealId;
 
 	// const mealIsFavorite = favoriteMealCtx.ids.includes(mealId);
-	const mealIsFavorite = favoriteMealIds.ids.includes(mealId);
+	const mealIsFavorite = favoriteMealIds.includes(mealId);
 
 	function changeFavoriteStatusHandler() {
 		if (mealIsFavorite) {
@@ -32,12 +32,12 @@ function MealDetailScreen({ route, navigation }) {
 	useLayoutEffect(() => {
 		navigation.setOptions({
 			headerRight: () => {
-				return <IconButton icon={mealIsFavorite ? 'star' : 'star-outline'} color="white" onPress={changeFavoriteStatusHandler} />;
+				return <IconButton icon={mealIsFavorite ? 'star' : 'star-outline'} color='white' onPress={changeFavoriteStatusHandler} />;
 			},
 		});
 	}, [navigation, changeFavoriteStatusHandler]);
 
-	const selectedMeal = MEALS.find((meal) => meal.id === mealId);
+	const selectedMeal = MEALS.find(meal => meal.id === mealId);
 	return (
 		<ScrollView style={styles.rootContainer}>
 			<Image style={styles.image} source={{ uri: selectedMeal.imageUrl }} />
